@@ -11,7 +11,6 @@ test("Verify user is able to login to UDC application", async ({page, request}) 
     pages.push(new LoginPage(page));
     const[login_page] = pages;
 
-    //console.log(pages.length);
     console.log(process.env.BASE);
 
     await Utils.launchURL(process.env.BASE, page);
@@ -22,13 +21,9 @@ test("Verify user is able to login to UDC application", async ({page, request}) 
     await page.waitForTimeout(10000);
     const currentPageURL = await Utils.getPageUrl(page);
     console.log(currentPageURL);
+
     await expect(currentPageURL).toContain("patients");
-
-
-
     
     //await new Promise(() => {});
-
-
 })
 
