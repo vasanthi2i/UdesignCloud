@@ -1,0 +1,26 @@
+{
+  "name": "udesigncloud",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test --config=./playwright.config.ts"
+  },
+  "keywords": [],
+  "author": "Ideas2IT QA team",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.42.1",
+    "@types/node": "^20.11.30",
+    "playwright": "^1.42.1",
+    "typescript": "^5.4.3"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "playwright-core": "^1.42.1",
+    "undici-types": "^5.26.5"
+  },
+  "description": ""
+}
