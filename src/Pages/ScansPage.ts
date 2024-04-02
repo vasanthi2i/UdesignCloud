@@ -3,6 +3,8 @@ import path from "path";
 import { Utils } from "../Utils/Utils";
 
 
+
+//Scans page
 export class ScansPage{
     page: Page;
     uploadUpperStl: Locator;
