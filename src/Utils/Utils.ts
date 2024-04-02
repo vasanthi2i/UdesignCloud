@@ -51,16 +51,22 @@ export class Utils{
     /*
     Upload multiple files in a file path
     */
-    static async uploadMultipleFiles(file: Locator, filePath: string): Promise<void>
+    static async uploadMultipleFiles(file: Locator, filePath1: string, filePath2: string): Promise<void>
     {
         if(path!=undefined)
         {
-        file.setInputFiles(path.join(filePath));
+        file.setInputFiles([path.join(filePath1),path.join(filePath2)]);
         }
         else
         {
             throw new Error('Please send a valid path to upload file');
         }
+    }
+
+    static async getCurrentTime(): Promise<number>
+    {
+        const timestamp = new Date().getSeconds();
+        return timestamp;
     }
 
 }
