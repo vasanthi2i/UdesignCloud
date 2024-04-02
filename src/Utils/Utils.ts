@@ -1,5 +1,6 @@
-import { Page } from "@playwright/test"
+import { Locator, Page } from "@playwright/test"
 import { error } from "console";
+import path from "path";
 
 
 export class Utils{
@@ -30,6 +31,36 @@ export class Utils{
         //page.waitForTimeout(3000);
         const currentPageURL = page.url();
         return currentPageURL;
+    }
+
+    /*
+    Upload a single file in a file path
+    */
+    static async uploadSingleFile(file: Locator, filePath: string): Promise<void>
+    {
+        if(path!=undefined)
+        {
+        file.setInputFiles(path.join(filePath));
+        }
+        else
+        {
+            throw new Error('Please send a valid path to upload file');
+        }
+    }
+
+    /*
+    Upload multiple files in a file path
+    */
+    static async uploadMultipleFiles(file: Locator, filePath: string): Promise<void>
+    {
+        if(path!=undefined)
+        {
+        file.setInputFiles(path.join(filePath));
+        }
+        else
+        {
+            throw new Error('Please send a valid path to upload file');
+        }
     }
 
 }
