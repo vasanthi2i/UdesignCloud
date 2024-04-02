@@ -19,16 +19,16 @@ export class ScansPage{
     }
 
 
-    async uploadStlFile(page: Page, isUpperStl: boolean)
+    async uploadSingleStlFile(page: Page, isUpperStl: boolean)
     {
         if(isUpperStl=true)
         {
-            Utils.uploadSingleFile(this.uploadUpperStl,'E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl');
+            Utils.uploadSingleFile(this.uploadUpperStl,'src\resources\Stls\MC269_lprofile_occlusion_u.stl');
         //this.uploadUpperStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl'));
         }
         else
         {
-            Utils.uploadSingleFile(this.uploadLowerStl  ,'E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_l.stl');
+            Utils.uploadSingleFile(this.uploadLowerStl,'src\resources\Stls\MC269_lprofile_occlusion_l.stl');
             //this.uploadLowerStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_l.stl'))
         }
     }
