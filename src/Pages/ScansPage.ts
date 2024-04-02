@@ -4,7 +4,7 @@ import { Utils } from "../Utils/Utils";
 
 
 
-//Scans page
+//Scans page updated
 export class ScansPage{
     page: Page;
     uploadUpperStl: Locator;
