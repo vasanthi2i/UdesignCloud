@@ -69,4 +69,60 @@ export class Utils{
         return timestamp;
     }
 
+    // Clicking Next button on any page
+    static async clickNextButton(page: Page): Promise <void> {
+        
+            const nextButton = await page.getByTestId('ChevronRightIcon');
+        //     We can also use the below locator
+        //  const nextButton = await page.getByRole('button',{name : 'Next'});
+            if (nextButton) {
+                await nextButton.click();
+                console.log('Clicked on the "Next" button.');
+            } else {
+                console.log('Could not find the "Next" button.');
+            }
+
+    }
+
+        // Clicking Close button on any page
+        static async clickCloseButton(page: Page): Promise <void> {
+        
+            const closeButton = await page.getByRole('button',{name : 'Close'});
+            if (closeButton) {
+                await closeButton.click();
+                console.log('Clicked on the "Close" button.');
+            } else {
+                console.log('Could not find the "Close" button.');
+            }
+
+    }
+
+        // Clicking Back button on any page
+        static async clickBackButton(page: Page): Promise <void> {
+        
+            const backButton = await page.getByTestId('ChevronLeftIcon');
+            if (backButton) {
+                await backButton.click();
+                console.log('Clicked on the "Back" button.');
+            } else {
+                console.log('Could not find the "Back" button.');
+            }
+
+    }
+
+            // Clicking Submit to uassist button on any page
+            static async clickSumbitToUassistButton(page: Page): Promise <void> {
+        
+                const submitToUassistButton = await page.getByTestId('ChevronRightIcon');
+            //     We can also use the below loactor
+        //  const nextButton = await page.getByRole('button',{name : 'Submit to uAssist'});
+                if (submitToUassistButton) {
+                    await submitToUassistButton.click();
+                    console.log('Clicked on the "Submit to uassist" button.');
+                } else {
+                    console.log('Could not find the "Submit to uassist" button.');
+                }
+    
+        }
+    
 }
