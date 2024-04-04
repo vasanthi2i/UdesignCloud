@@ -21,11 +21,10 @@ export class AddNewPatient {
         this.page = page;       
         this.fname = page.locator('//input[@id="firstName"]');
         this.lname = page.locator('//input[@id="lastName"]');
-        this.month = page.getByPlaceholder('placeholder',{name: 'MM' });
-        this.month = page.locator('//input[@id="month"]');
-        this.date = page.locator('//input[@id="day"]');
-        this.year = page.locator('//input[@id="year"]');
-        this.assignedto = page.locator('//input[@id="doctor"]');
+        this.month = page.getByPlaceholder('MM');
+        this.date = page.getByPlaceholder('DD');
+        this.year = page.getByPlaceholder('yyyy');
+        this.assignedto = page.getByPlaceholder('Select');;
         this.notes = page.locator('//textarea[@id="notes"]');
         this.addpatientButton = page.getByRole('button',{name: 'Add patient'});
         this.cancelAddpatientButton = page.getByRole('button',{name: 'Cancel'});
