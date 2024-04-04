@@ -14,24 +14,27 @@ export class AddNewPatient {
     assignedto: Locator;
     notes: Locator; 
     addpatientButton: Locator;
+    cancelAddpatientButton: Locator;
 
     constructor(page: Page)
     {
         this.page = page;       
         this.fname = page.locator('//input[@id="firstName"]');
         this.lname = page.locator('//input[@id="lastName"]');
+        this.month = page.getByPlaceholder('placeholder',{name: 'MM' });
         this.month = page.locator('//input[@id="month"]');
         this.date = page.locator('//input[@id="day"]');
         this.year = page.locator('//input[@id="year"]');
         this.assignedto = page.locator('//input[@id="doctor"]');
         this.notes = page.locator('//textarea[@id="notes"]');
         this.addpatientButton = page.getByRole('button',{name: 'Add patient'});
+        this.cancelAddpatientButton = page.getByRole('button',{name: 'Cancel'});
 
     }
 
     async enterFirstname(firstName: string): Promise <void>
     {
-        console.log('hi')
+        console.log('AddNewPatient')
         //this.page.waitForLoadState("domcontentloaded");
         await this.fname.click();
         await this.fname.fill(firstName);
@@ -68,24 +71,46 @@ export class AddNewPatient {
         await this.assignedto.fill(assigned);
     }
 
+    async enternotes(noteS: string): Promise <void>
+    {
+        await this.assignedto.click();
+        await this.assignedto.fill(noteS);
+    }
+
     async clickAddPatient(): Promise <void>
     {
         await this.addpatientButton.click();
     }
 
 
-    async addPatient(firstName: string,lastName: string,monthM: string,dateD: string,yearY: string,assigned: string ): Promise<void>
+    async addPatient(firstName: string,lastName: string,monthM: string,dateD: string,yearY: string,assigned: string,noteS: string ): Promise<void>
     {
-        await this.enterFirstname("Test");
-        await this.enterLastname('UDC ' + Utils.getCurrentTime());
-        await this.enterMonth("09");
-        await this.enterDay("03");
-        await this.enteryear("1997");
-        await this.enterassignedto("US SQA_Ortho");
+        await this.enterFirstname(firstName);
+        await this.enterLastname(lastName);
+        await this.enterMonth(monthM);
+        await this.enterDay(dateD);
+        await this.enteryear(yearY);
+        await this.enterassignedto(assigned);
+        await this.enternotes(noteS);
         await this.clickAddPatient();
     }
 
+    async clickCancel(): Promise <void>
+    {
+        await this.cancelAddpatientButton.click();
+    }
 
+    async cancelAddPatient(firstName: string,lastName: string,monthM: string,dateD: string,yearY: string,assigned: string,noteS: string ): Promise<void>
+    {
+        await this.enterFirstname(firstName);
+        await this.enterLastname(lastName);
+        await this.enterMonth(monthM);
+        await this.enterDay(dateD);
+        await this.enteryear(yearY);
+        await this.enterassignedto(assigned);
+        await this.enternotes(noteS);
+        await this.clickCancel();
+    }
 
 }
 
