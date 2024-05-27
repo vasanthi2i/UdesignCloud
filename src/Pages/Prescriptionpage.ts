@@ -114,50 +114,86 @@ export class PhotographsPage {
         console.log('Estimated treatment time were filled out')
     }
 
-    //Selecting arches to treat
-    async selectArch(arch: string): Promise<void> {
+    //Selecting arches to treat 
+    //Sample Input await selectTreatmentArch("Lower", "BracketRemoval, CoverLingualBar");
+    async selectTreatmentArch(arch: string, options: string, type?: string): Promise<void> {
+        const optionsArray = options.split(',');
+
         switch (arch) {
             case "Upper":
                 await this.upperCheckBox.check();
-                console.log('Upper Arch has been selected.');
+                if (type == "RetainerOnly") {
+                    await this.upperDropdown.click();
+                    await this.retainerOnlyOption.click();
+                }
+                for (const option of optionsArray) {
+                    switch (option.trim()) {
+                        case "BracketRemoval":
+                            await this.bracketRemovalCheckBoxUpper.check();
+                            break;
+                        case "CoverLingualBar":
+                            await this.coverLingualBarCheckBoxUpper.check();
+                            break;
+                        case "RemoveLingualBar":
+                            await this.removeLingualBarCheckBoxUpper.check();
+                            break;
+                        default:
+                            console.error('Checkbox for option  not found. Check your input data.');
+                    }
+                }
                 break;
             case "Lower":
                 await this.lowerCheckBox.check();
-                console.log('Lower Arch has been selected.');
+                if (type == "RetainerOnly") {
+                    await this.lowerDropdown.click();
+                    await this.retainerOnlyOption.click();
+                }
+                for (const option of optionsArray) {
+                    switch (option.trim()) {
+                        case "BracketRemoval":
+                            await this.bracketRemovalCheckBoxLower.check();
+                            break;
+                        case "CoverLingualBar":
+                            await this.coverLingualBarCheckBoxLower.check();
+                            break;
+                        case "RemoveLingualBar":
+                            await this.removeLingualBarCheckBoxLower.check();
+                            break;
+                        default:
+                            console.error('Checkbox for option  not found. Check your input data.');
+                    }
+                }
                 break;
             case "BothArches":
                 await this.upperCheckBox.check();
                 await this.lowerCheckBox.check();
-                console.log('Upper and lower arches were selected.');
+                if (type == "RetainerOnly") {
+                    await this.upperDropdown.click();
+                    await this.retainerOnlyOption.click();
+                    await this.lowerDropdown.click();
+                    await this.retainerOnlyOption.click();
+                }
+                for (const option of optionsArray) {
+                    switch (option.trim()) {
+                        case "BracketRemoval":
+                            await this.bracketRemovalCheckBoxUpper.check();
+                            await this.bracketRemovalCheckBoxLower.check();
+                            break;
+                        case "CoverLingualBar":
+                            await this.coverLingualBarCheckBoxUpper.check();
+                            await this.coverLingualBarCheckBoxLower.check();
+                            break;
+                        case "RemoveLingualBar":
+                            await this.removeLingualBarCheckBoxUpper.check();
+                            await this.removeLingualBarCheckBoxLower.check();
+                            break;
+                        default:
+                            console.error('Checkbox for option  not found. Check your input data.');
+                    }
+                }
                 break;
             default:
-                console.error('Checkbox not found. Check your input data');
-                break;
-        }
-    }
-
-    //Selecting Upper and Lower arches treatment type
-    async selectUpperTreatmentOption(option: string): Promise<void> {
-        await this.upperDropdown.click();
-        if (option === "Aligner") {
-            await this.alignerOption.click();
-            console.log('Upper Aligner option was selected');
-        }
-        else {
-            await this.retainerOnlyOption.click();
-            console.log('Upper Retainer only option was selected');
-        }
-    }
-
-    async selectLowerTreatmentOption(option: string): Promise<void> {
-        await this.lowerDropdown.click();
-        if (option === "Aligner") {
-            await this.alignerOption.click();
-            console.log('Lower Aligner option was selected');
-        }
-        else {
-            await this.retainerOnlyOption.click();
-            console.log('Lower Retainer only option was selected');
+                console.error('Invalid arch. Please select either "Upper" or "Lower".');
         }
     }
 
