@@ -91,5 +91,35 @@ export class Utils {
         }
 
     }
+    // Selecting Checkbox 
+    static async selectCheckBox(checkBox: Locator): Promise<void> {
+        if (checkBox) {
+            await checkBox.check();
+            console.log('Checkbox is checked');
+        } else {
+            console.log('Could not find the checkbox option.');
+        }
+    }
 
+    // Selecting RadioButton 
+    static async selectRadioButton(radioButton: Locator): Promise<void> { 
+        if (radioButton) { 
+            await radioButton.check();
+            console.log('Radiobutton is selected');
+        } else {
+            console.log('Could not find the radio button option.')
+        }
+
+    }
+
+    // Selecting Dropdown values
+    static async selectDropdownValue(dropdown: Locator, value: Locator): Promise<void> {
+        if (dropdown) { 
+            await dropdown.click();
+            await value.click();
+            console.log('Given dropdown value is selected');
+        } else {
+            console.log('Could not find the Dropdown/value.')
+        }
+    }
 }
