@@ -108,243 +108,84 @@ export class PhotographsPage {
     }
 
     //Entering Estimated Treatment Time
-    async enterEstimatedTreatmentTime(treatmentTime: string): Promise<void> {
+    async fillEstimatedTreatmentTime(treatmentTime: any): Promise<void> {
         await this.estimatedTreatmentTime.click();
         await this.estimatedTreatmentTime.fill(treatmentTime);
-        console.log('Estimated treatment time were filled out')
+        console.log('Estimated treatment time was filled out')
     }
 
-    //Selecting arches to treat 
-    //Sample Input await selectTreatmentArch("Lower", "BracketRemoval, CoverLingualBar");
-    async selectTreatmentArch(arch: string, options: string, type?: string): Promise<void> {
-        const optionsArray = options.split(',');
-
-        switch (arch) {
-            case "Upper":
-                await this.upperCheckBox.check();
-                if (type == "RetainerOnly") {
-                    await this.upperDropdown.click();
-                    await this.retainerOnlyOption.click();
-                }
-                for (const option of optionsArray) {
-                    switch (option.trim()) {
-                        case "BracketRemoval":
-                            await this.bracketRemovalCheckBoxUpper.check();
-                            break;
-                        case "CoverLingualBar":
-                            await this.coverLingualBarCheckBoxUpper.check();
-                            break;
-                        case "RemoveLingualBar":
-                            await this.removeLingualBarCheckBoxUpper.check();
-                            break;
-                        default:
-                            console.error('Checkbox for option  not found. Check your input data.');
-                    }
-                }
-                break;
-            case "Lower":
-                await this.lowerCheckBox.check();
-                if (type == "RetainerOnly") {
-                    await this.lowerDropdown.click();
-                    await this.retainerOnlyOption.click();
-                }
-                for (const option of optionsArray) {
-                    switch (option.trim()) {
-                        case "BracketRemoval":
-                            await this.bracketRemovalCheckBoxLower.check();
-                            break;
-                        case "CoverLingualBar":
-                            await this.coverLingualBarCheckBoxLower.check();
-                            break;
-                        case "RemoveLingualBar":
-                            await this.removeLingualBarCheckBoxLower.check();
-                            break;
-                        default:
-                            console.error('Checkbox for option  not found. Check your input data.');
-                    }
-                }
-                break;
-            case "BothArches":
-                await this.upperCheckBox.check();
-                await this.lowerCheckBox.check();
-                if (type == "RetainerOnly") {
-                    await this.upperDropdown.click();
-                    await this.retainerOnlyOption.click();
-                    await this.lowerDropdown.click();
-                    await this.retainerOnlyOption.click();
-                }
-                for (const option of optionsArray) {
-                    switch (option.trim()) {
-                        case "BracketRemoval":
-                            await this.bracketRemovalCheckBoxUpper.check();
-                            await this.bracketRemovalCheckBoxLower.check();
-                            break;
-                        case "CoverLingualBar":
-                            await this.coverLingualBarCheckBoxUpper.check();
-                            await this.coverLingualBarCheckBoxLower.check();
-                            break;
-                        case "RemoveLingualBar":
-                            await this.removeLingualBarCheckBoxUpper.check();
-                            await this.removeLingualBarCheckBoxLower.check();
-                            break;
-                        default:
-                            console.error('Checkbox for option  not found. Check your input data.');
-                    }
-                }
-                break;
-            default:
-                console.error('Invalid arch. Please select either "Upper" or "Lower".');
-        }
+    //Selecting Upper Arch check box 
+    async selectUpperArch(): Promise<void> {
+        Utils.selectCheckBox(this.upperCheckBox);
     }
 
-    //Selecting Teeth to Treat
-    async selectTeethToTreat(teeth: string): Promise<void> {
-        switch (teeth) {
-            case "3-3":
-                await this.seletedTeeth_3to3.check();
-                console.log('3-3 teeth option selected to treat.');
-                break;
-            case "5-5":
-                await this.seletedTeeth_5to5.check();
-                console.log('5-5 teeth option selected to treat.');
-                break;
-            case "6-6":
-                await this.seletedTeeth_6to6.check();
-                console.log('6-6 teeth option selected to treat.');
-                break;
-            case "7-7":
-                await this.seletedTeeth_7to7.check();
-                console.log('7-7 teeth option selected to treat.');
-                break;
-            default:
-                console.error('Option not found.Check your input data');
-                break;
-        }
-
+    //Selecting Lower Arch check box
+    async selectLowerArch(): Promise<void> {
+        Utils.selectCheckBox(this.lowerCheckBox);
     }
 
-    //Selecting Class Correction
-    async selectClassCorrection(classCorrectionOption: string): Promise<void> {
-        switch (classCorrectionOption) {
-            case "Maintain":
-                await this.maintain_ClassCorrection.check();
-                console.log('Maintain class correction is selected.');
-                break;
-            case "Correct":
-                await this.maintain_ClassCorrection.check();
-                console.log('Maintain class correction is selected.');
-                break;
-            case "AcceptBestFit":
-                await this.acceptBestFit_ClassCorrection.check();
-                console.log('Accept best fit class correction is selected.');
-                break;
-            default:
-                console.error('Option not found.Check your input data');
-                break;
-        }
+    //Selecting Retainer Only value from Dropdown
+    async selectUpperRetainer(): Promise<void> {
+        Utils.selectDropdownValue(this.upperDropdown, this.retainerOnlyOption);
+    }
+    async selectLowerRetainer(): Promise<void> {
+        Utils.selectDropdownValue(this.lowerDropdown, this.retainerOnlyOption);
     }
 
-    //Selecting Midline Correction
-    async selectMidlineCorrection(midlineCorrectionOption: string): Promise<void> {
-        switch (midlineCorrectionOption) {
-            case "Maintain":
-                await this.maintain_MidlineCorrection.check();
-                console.log('Maintain midline correction is selected.');
-                break;
-            case "MoveUppertoLower":
-                await this.moveUpperToLower_MidlineCorrection.check();
-                console.log('Move upper to lower midline correction is selected.');
-                break;
-            case "MoveLowertoUpper":
-                await this.moveLowerToUpper_MidlineCorrection.check();
-                console.log('Move lower to upper midline correction is selected.');
-                break;
-            case "MoveBoth":
-                await this.moveBoth_MidlineCorrection.check();
-                console.log('Move both midline correction is selected.');
-                break;
-            default:
-                console.error('Option not found.Check your input data');
-                break;
-        }
+    //Selecting Bracket Removal option
+    async selectBracketRemovalUpper(): Promise<void> {
+        Utils.selectCheckBox(this.bracketRemovalCheckBoxUpper);
     }
 
-    //Selecting cross bite correction Correction
-    async selectCrossbiteCorrection(crossbiteCorrectionOption: string): Promise<void> {
-        switch (crossbiteCorrectionOption) {
-            case "NotApplicable":
-                await this.notApplicable_CrossbiteCorrection.check();
-                console.log('Not applicble cross bite correction is selected.');
-                break;
-            case "Maintain":
-                await this.maintain_CrossbiteCorrection.check();
-                console.log('Maintain cross bite correction is selected.');
-                break;
-            case "Correct":
-                await this.correct_CrossbiteCorrection.check();
-                console.log('Correct cross bite correction is selected.');
-                break;
-            default:
-                console.error('Option not found.Check your input data');
-                break;
-        }
+    //Selecting Cover Lingual Bar option 
+    async selectCoverLingualBar(): Promise<void> {
+        Utils.selectCheckBox(this.coverLingualBarCheckBoxLower);
     }
+
+    // Selecting 5-5 Teeth to Treat
+    async select5to5TeethtoTreat(): Promise<void> {
+        Utils.selectRadioButton(this.seletedTeeth_5to5);
+    }
+
+    // Selecting Correct Class correction option
+    async selectCorrectClassCorection(): Promise<void> {
+        Utils.selectRadioButton(this.correct_ClassCorrection);
+    }
+
+    // Selecting Maintain Midline correction option
+    async selectMaintainMidlineCorrection(): Promise<void> {
+        Utils.selectRadioButton(this.maintain_MidlineCorrection);
+    }
+
+    // Selecting Not Applicable Crosbite correction option
+    async selectNotApplicableCrossbiteCorrection(): Promise<void> {
+        Utils.selectRadioButton(this.notApplicable_CrossbiteCorrection);
+    }
+
 
     //Selecting planning for restoration
-    async selectPlanforRestoration(planforRestoreOption: string, text?: string): Promise<void> {
-        if (planforRestoreOption === "Yes") {
-            await this.yes_PlanningForRestoration.check();
-            console.log('Yes, Planning for Restoration, Pontic or Eruption Dome.');
-            await this.planForRestorationTextField.click();
-            text && await this.planForRestorationTextField.fill(text);
-        } else {
-            await this.no_PlanningForRestoration.check();
-        }
+    async selectPlanforRestoration(text: string): Promise<void> {
+        Utils.selectRadioButton(this.yes_PlanningForRestoration);
+        await this.planForRestorationTextField.fill(text);
+    }
+    async noPlanforRestoration(): Promise<void> {
+        Utils.selectRadioButton(this.no_PlanningForRestoration);
     }
 
-    //Selecting SmartRx Template
-    async selectSmartRxTemplate(templateOption: string, templateInstruction: string): Promise<void> {
-        await this.smartRxTemplate_Dropdown.click();
-        switch (templateOption) {
-            case "Crowding":
-                await this.crowding_FormTemplate.click();
-                await this.crowding_Instructions.click();
-                await this.crowding_Instructions.fill(templateInstruction);
-                console.log('Crowding SmartRx template is selected');
-                break;
-            case "OpenBite":
-                await this.openBite_FormTemplate.click();
-                await this.openBite_Instructions.click();
-                await this.openBite_Instructions.fill(templateInstruction);
-                console.log('Open bite SmartRx template is selected');
-                break;
-            case "LimitedTreatment":
-                await this.limitedTreatment_FormTemplate.click();
-                await this.limitedTreatment_Instructions.click();
-                await this.limitedTreatment_Instructions.fill(templateInstruction);
-                console.log('Limited treatment SmartRx template is selcted');
-                break;
-            case "DeepBite":
-                await this.deepBite_FormTemplate.click();
-                await this.deepBite_Instructions.click();
-                await this.deepBite_Instructions.fill(templateInstruction);
-                console.log('Deep bite SmartRx template is selected');
-                break;
-            case "Spacing":
-                await this.spacing_FormTemplate.click();
-                await this.spacing_Instructions.click();
-                await this.spacing_Instructions.fill(templateInstruction);
-                console.log('Spacing SmartRx template is selected');
-                break;
-            default:
-                console.error('Option not found.Check your input data');
-                break;
-        }
 
+    //Selecting Crowding SmartRx Template
+    async selectCrowdingTemplate(): Promise<void> {
+        Utils.selectDropdownValue(this.smartRxTemplate_Dropdown, this.crowding_FormTemplate);
+    }
+
+    //Entering Template Instructions
+    async fillTemplateInstructions(templateInstructions: string): Promise<void> {
+        await this.crowding_Instructions.click();
+        await this.crowding_Instructions.fill(templateInstructions);
     }
 
     //Entering Case Specific Instructions
-    async enterCaseSpecificInstruction(instructions: string): Promise<void> {
+    async fillCaseSpecificInstructions(instructions: string): Promise<void> {
         await this.caseSpecific_Instructions.click();
         await this.caseSpecific_Instructions.fill(instructions);
         console.log('Case specific instructions were filled out');
