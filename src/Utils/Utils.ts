@@ -94,7 +94,7 @@ export class Utils {
     // Selecting Checkbox 
     static async selectCheckBox(checkBox: Locator): Promise<void> {
         if (checkBox) {
-            await checkBox.check();
+            await checkBox.click();
             console.log('Checkbox is checked');
         } else {
             console.log('Could not find the checkbox option.');
@@ -104,7 +104,7 @@ export class Utils {
     // Selecting RadioButton 
     static async selectRadioButton(radioButton: Locator): Promise<void> { 
         if (radioButton) { 
-            await radioButton.check();
+            await radioButton.click();
             console.log('Radiobutton is selected');
         } else {
             console.log('Could not find the radio button option.')

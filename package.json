@@ -9,7 +9,7 @@
   "author": "Ideas2IT QA team",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.42.1",
+    "@playwright/test": "^1.44.1",
     "@types/node": "^20.11.30",
     "playwright": "^1.42.1",
     "typescript": "^5.4.3"

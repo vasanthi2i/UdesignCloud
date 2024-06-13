@@ -1,0 +1,16 @@
+#1 Verify user is able to login successfully in UDC application
+
+#2 Verify if Invalid username/Password error message displays when incorrect password is entered
+
+#3 Verify if uassist order can be placed for new cases
+
+Testcases to be automated:
+
+#4 Verify if user is not able to proceed for dental chart page when any of scans/photograhs are not uploaded
+
+#5 Verify if Retainer uassist order can be placed for new cases
+
+#6 Verify if cases can be archived 
+
+#7 Verify cases can be filtered on the patient overview page 
+ 

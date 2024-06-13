@@ -19,7 +19,7 @@ export class DentalChartPage {
 
 
     //Clicking next button
-    async clickNextButtonOnDentalChartPage(page: Page): Promise<void> {
+    async clickNextButtonOnDentalChartPage(): Promise<void> {
         Utils.clickNextButton(this.nextButton);
     }
 
