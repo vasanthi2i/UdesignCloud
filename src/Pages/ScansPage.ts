@@ -3,7 +3,6 @@ import path from "path";
 import { Utils } from "../Utils/Utils";
 
 
-
 //Scans page updated
 export class ScansPage {
     page: Page;
@@ -22,23 +21,37 @@ export class ScansPage {
     }
 
 
-    async uploadSingleStlFile(page: Page, isUpperStl: boolean) {
-        if (isUpperStl = true) {
-            Utils.uploadSingleFile(this.uploadUpperStl, 'src\resources\Stls\MC269_lprofile_occlusion_u.stl');
+    // async uploadSingleStlFile(isUpperStl: boolean) {
+    //     if (isUpperStl = true) {
+    //         Utils.uploadSingleFile(this.uploadUpperStl, 'src/resources/Stls/MC269_lprofile_occlusion_u.stl');
+    //         //this.uploadUpperStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl'));
+    //     }
+    //     else if(isUpperStl = false){
+    //         Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');
+    //         //this.uploadLowerStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_l.stl'))
+    //     }
+    //     else
+    //     {
+    //         console.log('Invalid path');
+    //     }
+    // }
+
+    async uploadUpperStlFile() {
+             Utils.uploadSingleFile(this.uploadUpperStl, 'src/resources/Stls/MC269_lprofile_occlusion_u.stl');
             //this.uploadUpperStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl'));
         }
-        else {
-            Utils.uploadSingleFile(this.uploadLowerStl, 'src\resources\Stls\MC269_lprofile_occlusion_l.stl');
-            //this.uploadLowerStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_l.stl'))
-        }
-    }
 
-    // Clicking next button
-    async clickNextButtonOnScansPage(page: Page): Promise<void> {
+    async uploadLowerStlFile() {
+            Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');   
+            //this.uploadUpperStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl'));
+       }
+
+    // Click Next button
+    async clickNextButtonOnScansPage(): Promise<void> {
         Utils.clickNextButton(this.nextButton);
     }
 
-    // Clicking Close button
+    // Click Close button
     async clickCloseButtonOnOrdertypePage(): Promise<void> {
         Utils.clickCloseButton(this.closeButton);
     }

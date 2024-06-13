@@ -22,12 +22,15 @@ export class PhotographsPage {
     }
 
     // Uploading Composite Image
-    async uploadCompositeImageFile(page: Page): Promise<void> {
-        Utils.uploadSingleFile(this.uploadCompositeImage, 'UdesignCloud\src\resources\Photographs\smile.png');
+    async uploadCompositeImageFile(): Promise<void> {
+        Utils.uploadSingleFile(this.uploadCompositeImage, 'src/resources/Photographs/smile.png');
+        console.log('Uploaded Composite image');
+
     }
+    //src\resources\Photographs\smile.png
 
     //Clicking Next Button
-    async clickNextButtonOnPhotographsPage(page: Page): Promise<void> {
+    async clickNextButtonOnPhotographsPage(): Promise<void> {
         Utils.clickNextButton(this.nextButton);
     }
 

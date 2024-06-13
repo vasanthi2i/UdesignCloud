@@ -23,18 +23,19 @@ export class XraysPage {
     }
 
     //Uploading Pano image
-    async uploadPanoImageFile(page: Page): Promise<void> {
-        Utils.uploadSingleFile(this.uploadPanoImage, 'UdesignCloud\src\resources\Xrays\pano.png');
+    async uploadPanoImageFile(): Promise<void> {
+        Utils.uploadSingleFile(this.uploadPanoImage, 'src/resources/Xrays/pano.png');
+        console.log('Uploaded Panographic image');
     }
 
 
     //Uploading ceph image
-    async uploadCephImageFile(page: Page): Promise<void> {
-        Utils.uploadSingleFile(this.uploadCephImage, 'UdesignCloud\src\resources\Xrays\ceph.png');
+    async uploadCephImageFile(): Promise<void> {
+        Utils.uploadSingleFile(this.uploadCephImage, 'src/resources/Xrays/ceph.png');
     }
 
     // Clicking Next button 
-    async clickNextButtonOnXraysPage(page: Page): Promise<void> {
+    async clickNextButtonOnXraysPage(): Promise<void> {
         Utils.clickNextButton(this.nextButton);
     }
 

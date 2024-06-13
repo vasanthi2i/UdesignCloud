@@ -12,9 +12,10 @@ export class AddNewPatient {
     date: Locator;
     year: Locator;
     assignedto: Locator;
+    userList: Locator;
     notes: Locator; 
-    addpatientButton: Locator;
-    cancelAddpatientButton: Locator;
+    addPatientButton: Locator;
+    cancelAddPatientButton: Locator;
 
     constructor(page: Page)
     {
@@ -24,26 +25,26 @@ export class AddNewPatient {
         this.month = page.getByPlaceholder('MM');
         this.date = page.getByPlaceholder('DD');
         this.year = page.getByPlaceholder('yyyy');
-        this.assignedto = page.getByPlaceholder('Select');;
+        this.assignedto = page.getByPlaceholder('Select');
+        this.userList = page.locator('//ul[@class="css-13pngn9"]/li');
         this.notes = page.locator('//textarea[@id="notes"]');
-        this.addpatientButton = page.getByRole('button',{name: 'Add patient'});
-        this.cancelAddpatientButton = page.getByRole('button',{name: 'Cancel'});
+        this.addPatientButton = page.getByRole('button',{name: 'Add patient'});
+        this.cancelAddPatientButton = page.getByRole('button',{name: 'Cancel'});
 
     }
 
-    async enterFirstname(firstName: string): Promise <void>
+    async enterFirstName(firstName: string): Promise <void>
     {
-        console.log('AddNewPatient')
+        //console.log('AddNewPatient')
         //this.page.waitForLoadState("domcontentloaded");
         await this.fname.click();
         await this.fname.fill(firstName);
     }
 
-    async enterLastname(lastName: string): Promise <void>
+    async enterLastName(lastName: string): Promise <void>
     {
-        
         await this.lname.click();
-        await this.lname.fill(lastName);
+        await this.lname.fill(lastName + await Utils.getCurrentTime());
     }
 
     async enterMonth(monthM: string): Promise <void>
@@ -58,56 +59,67 @@ export class AddNewPatient {
         await this.date.fill(dateD);
     }
 
-    async enteryear(yearY: string): Promise <void>
+    async enterYear(yearY: string): Promise <void>
     {
         await this.year.click();
         await this.year.fill(yearY);
     }
 
-    async enterassignedto(assigned: string): Promise <void>
+    async enterAssignedTo(assigned: string): Promise <void>
     {
         await this.assignedto.click();
         await this.assignedto.fill(assigned);
+        let list = await this.userList.getByText(assigned);
+        let text = await list.innerText();
+        if(text.includes('US SQA'))
+            {
+                this.userList.click();
+            }
+            else
+            {
+                console.log('Invalid user name');
+            }
     }
 
-    async enternotes(noteS: string): Promise <void>
+    async enterNotes(notes: string): Promise <void>
     {
-        await this.assignedto.click();
-        await this.assignedto.fill(noteS);
+        await this.notes.click();
+        await this.notes.fill(notes);
     }
 
     async clickAddPatient(): Promise <void>
     {
-        await this.addpatientButton.click();
+        await this.addPatientButton.click();
     }
 
 
-    async addPatient(firstName: string,lastName: string,monthM: string,dateD: string,yearY: string,assigned: string,noteS: string ): Promise<void>
+    async addPatient(firstName: string,lastName: string,monthM: string,dateD: string,yearY: string,assigned: string,notes: string ): Promise<void>
     {
-        await this.enterFirstname(firstName);
-        await this.enterLastname(lastName);
+        await this.enterFirstName(firstName);
+        await this.enterLastName(lastName);
         await this.enterMonth(monthM);
         await this.enterDay(dateD);
-        await this.enteryear(yearY);
-        await this.enterassignedto(assigned);
-        await this.enternotes(noteS);
+        await this.enterYear(yearY);
+        await this.enterAssignedTo(assigned);
+        await this.enterNotes(notes);
         await this.clickAddPatient();
+        console.log('New patient added');
     }
 
     async clickCancel(): Promise <void>
     {
-        await this.cancelAddpatientButton.click();
+        await this.cancelAddPatientButton.click();
     }
 
-    async cancelAddPatient(firstName: string,lastName: string,monthM: string,dateD: string,yearY: string,assigned: string,noteS: string ): Promise<void>
+    async cancelAddPatient(firstName: string,lastName: string,monthM: string,dateD: string,yearY: string,assigned: string,notes: string ): Promise<void>
     {
-        await this.enterFirstname(firstName);
-        await this.enterLastname(lastName);
+        await this.enterFirstName(firstName);
+        await this.enterLastName(lastName);
         await this.enterMonth(monthM);
         await this.enterDay(dateD);
-        await this.enteryear(yearY);
-        await this.enterassignedto(assigned);
-        await this.enternotes(noteS);
+        await this.enterYear(yearY);
+        await this.enterAssignedTo(assigned);
+        await this.enterNotes(notes);
         await this.clickCancel();
     }
 
