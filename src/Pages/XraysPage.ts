@@ -24,28 +24,28 @@ export class XraysPage {
 
     //Uploading Pano image
     async uploadPanoImageFile(): Promise<void> {
-        Utils.uploadSingleFile(this.uploadPanoImage, 'src/resources/Xrays/pano.png');
+        await Utils.uploadSingleFile(this.uploadPanoImage, 'src/resources/Xrays/pano.png');
         console.log('Uploaded Panographic image');
     }
 
 
     //Uploading ceph image
     async uploadCephImageFile(): Promise<void> {
-        Utils.uploadSingleFile(this.uploadCephImage, 'src/resources/Xrays/ceph.png');
+        await Utils.uploadSingleFile(this.uploadCephImage, 'src/resources/Xrays/ceph.png');
     }
 
     // Clicking Next button 
     async clickNextButtonOnXraysPage(): Promise<void> {
-        Utils.clickNextButton(this.nextButton);
+        await Utils.clickNextButton(this.nextButton);
     }
 
     // Clicking Close button
     async clickCloseButtonOnXraysPage(): Promise<void> {
-        Utils.clickCloseButton(this.closeButton);
+        await Utils.clickCloseButton(this.closeButton);
     }
 
     // Clicking Back button
     async clickBackButtonOnXraysPage(): Promise<void> {
-        Utils.clickBackButton(this.backButton);
+        await Utils.clickBackButton(this.backButton);
     }
 }

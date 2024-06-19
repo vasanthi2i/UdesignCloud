@@ -20,17 +20,17 @@ export class DentalChartPage {
 
     //Clicking next button
     async clickNextButtonOnDentalChartPage(): Promise<void> {
-        Utils.clickNextButton(this.nextButton);
+        await Utils.clickNextButton(this.nextButton);
     }
 
     // Clicking Close button
     async clickCloseButtonOnDentalChartPage(): Promise<void> {
-        Utils.clickCloseButton(this.closeButton);
+        await Utils.clickCloseButton(this.closeButton);
     }
 
     // Clicking Back button
     async clickBackButtonOnDentalChartPage(): Promise<void> {
-        Utils.clickBackButton(this.backButton);
+        await Utils.clickBackButton(this.backButton);
     }
 
 }

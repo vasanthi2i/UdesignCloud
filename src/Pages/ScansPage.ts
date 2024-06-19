@@ -37,23 +37,23 @@ export class ScansPage {
     // }
 
     async uploadUpperStlFile() {
-             Utils.uploadSingleFile(this.uploadUpperStl, 'src/resources/Stls/MC269_lprofile_occlusion_u.stl');
+        await Utils.uploadSingleFile(this.uploadUpperStl, 'src/resources/Stls/MC269_lprofile_occlusion_u.stl');
             //this.uploadUpperStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl'));
         }
 
     async uploadLowerStlFile() {
-            Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');   
+        await Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');   
             //this.uploadUpperStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl'));
        }
 
     // Click Next button
     async clickNextButtonOnScansPage(): Promise<void> {
-        Utils.clickNextButton(this.nextButton);
+        await Utils.clickNextButton(this.nextButton);
     }
 
     // Click Close button
     async clickCloseButtonOnOrdertypePage(): Promise<void> {
-        Utils.clickCloseButton(this.closeButton);
+        await Utils.clickCloseButton(this.closeButton);
     }
 
 

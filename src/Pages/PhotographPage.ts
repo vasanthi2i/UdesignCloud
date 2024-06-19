@@ -23,7 +23,7 @@ export class PhotographsPage {
 
     // Uploading Composite Image
     async uploadCompositeImageFile(): Promise<void> {
-        Utils.uploadSingleFile(this.uploadCompositeImage, 'src/resources/Photographs/smile.png');
+        await Utils.uploadSingleFile(this.uploadCompositeImage, 'src/resources/Photographs/smile.png');
         console.log('Uploaded Composite image');
 
     }
@@ -31,17 +31,17 @@ export class PhotographsPage {
 
     //Clicking Next Button
     async clickNextButtonOnPhotographsPage(): Promise<void> {
-        Utils.clickNextButton(this.nextButton);
+        await Utils.clickNextButton(this.nextButton);
     }
 
     // Clicking Close button
     async clickCloseButtonOnPhotographsPage(): Promise<void> {
-        Utils.clickCloseButton(this.closeButton);
+        await Utils.clickCloseButton(this.closeButton);
     }
 
     // Clicking Back button
     async clickBackButtonOnPhotographsPage(): Promise<void> {
-        Utils.clickBackButton(this.backButton);
+        await Utils.clickBackButton(this.backButton);
     }
 
 }
