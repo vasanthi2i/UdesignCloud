@@ -254,12 +254,21 @@ export class Prescriptionpage {
 
     // Clicking Close button
     async clickCloseButton(): Promise<void> {
-        Utils.clickCloseButton(this.closeButton);
+        await Utils.clickCloseButton(this.closeButton);
     }
 
     // Clicking Back button
     async clickBackButton(): Promise<void> {
-        Utils.clickBackButton(this.backButton);
+        await Utils.clickBackButton(this.backButton);
+    }
+
+    //Clicking Next Button
+    async clickNextButton(): Promise<void> {
+        // Utils.clickNextButton(this.nextButton);
+        console.log('Clicked Next button');
+        const nextBtn = this.page.getByRole('button', {name:'Next' });
+        //nextBtn.isVisible();
+        nextBtn.click();
     }
 
     //Clicking Next Button

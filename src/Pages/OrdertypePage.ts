@@ -43,12 +43,12 @@ export class OrdertypePage {
 
     // Clicking Close button
     async clickCloseButtonOnOrdertypePage(): Promise<void> {
-        Utils.clickCloseButton(this.closeButton);
+        await Utils.clickCloseButton(this.closeButton);
     }
 
     // Clicking Back button
     async clickBackButtonOnOrdertypePage(): Promise<void> {
-        Utils.clickBackButton(this.backButton);
+        await Utils.clickBackButton(this.backButton);
     }
 
 }
