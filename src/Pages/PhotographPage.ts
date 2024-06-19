@@ -25,7 +25,6 @@ export class PhotographsPage {
     async uploadCompositeImageFile(): Promise<void> {
         await Utils.uploadSingleFile(this.uploadCompositeImage, 'src/resources/Photographs/smile.png');
         console.log('Uploaded Composite image');
-
     }
     //src\resources\Photographs\smile.png
 

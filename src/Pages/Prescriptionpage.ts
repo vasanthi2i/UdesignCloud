@@ -271,4 +271,13 @@ export class Prescriptionpage {
         nextBtn.click();
     }
 
+    //Clicking Next Button
+    async clickNextButton(): Promise<void> {
+        // Utils.clickNextButton(this.nextButton);
+        console.log('Clicked Next button');
+        const nextBtn = this.page.getByRole('button', {name:'Next' });
+        //nextBtn.isVisible();
+        nextBtn.click();
+    }
+
 }

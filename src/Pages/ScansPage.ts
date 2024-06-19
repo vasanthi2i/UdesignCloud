@@ -43,8 +43,7 @@ export class ScansPage {
 
     async uploadLowerStlFile() {
         await Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');   
-            //this.uploadUpperStl.setInputFiles(path.join('E:/Downloads/UD cloud demo/UD cloud demo/stls/MC269_lprofile_occlusion_u.stl'));
-       }
+            Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');   
 
     // Click Next button
     async clickNextButtonOnScansPage(): Promise<void> {

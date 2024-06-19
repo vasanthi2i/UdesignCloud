@@ -14,9 +14,7 @@ import { UassistOrderConfirmationPage } from "../src/Pages/UassistOrderConfirmat
 import { TemplatePage } from "../src/Pages/TemplatePage";
 
 
-
 test("Verify uassist case can be created for a new case", async ({page}) => {
-
     //test.slow();
     test.setTimeout(200000);
     const pages:any [] = [];
