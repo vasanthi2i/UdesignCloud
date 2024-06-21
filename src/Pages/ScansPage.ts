@@ -43,7 +43,9 @@ export class ScansPage {
 
     async uploadLowerStlFile() {
         await Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');   
-            Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl');   
+            Utils.uploadSingleFile(this.uploadLowerStl, 'src/resources/Stls/MC269_lprofile_occlusion_l.stl'); 
+            
+    }
 
     // Click Next button
     async clickNextButtonOnScansPage(): Promise<void> {
