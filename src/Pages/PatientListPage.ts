@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
-import path from "path";
 import { Utils } from "../Utils/Utils";
+
 
 
 export class PatientListPage{
@@ -14,6 +14,8 @@ export class PatientListPage{
     filterButton: Locator;
     menu: Locator;
     filterLabelFillOutRxForm: Locator;
+    archiveCaseButton: Locator;
+    cancel: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -26,6 +28,8 @@ export class PatientListPage{
         this.filterButton= page.getByRole('button',{name: 'FILTER'});
         this.menu= page.locator("//div[@id='menu-']");
         this.filterLabelFillOutRxForm= page.locator("//span[text()='Fill Out Rx Form']");
+        this.archiveCaseButton = page.getByRole('button', { name: 'Archive Case'});
+        this.cancel = page.getByRole('button', { name: 'Cancel'});
     }
 
     async clickAddNewPatientButton(): Promise <void>
@@ -34,8 +38,7 @@ export class PatientListPage{
     }
     async selectingPatient(patientName :string): Promise <void>
     {
-        await this.searchField.click();
-        await this.searchField.fill(patientName);
+        this.searchPatient(patientName);
         await this.patientFirstName.first().click();
         console.log("Patient "+ patientName + " was selected to archive");
     }
@@ -54,4 +57,49 @@ export class PatientListPage{
         return status_label;
     }
     
+
+    async searchPatient(patientName: string): Promise <void>
+    {
+        await this.searchField.click();
+        await this.searchField.fill(patientName);
+    }
+
+    async clickCaseMenuOptionsIcon(caseId: string): Promise<void>
+    {
+        if(caseId)
+            {
+                const patientCaseId = this.page.locator('//td/a[contains(text(),589105)]');
+                if(patientCaseId)
+                    {
+                        await patientCaseId.hover();
+                        console.log(patientCaseId);
+                    }
+                
+                const caseMenuOptionsIcon = this.page.locator('//td/a[contains(text(),589105)]/ancestor::td/following-sibling::td//button');
+                await caseMenuOptionsIcon.click();
+            }
+        else{
+            console.log('case id not found');
+        }
+    }
+
+    async clickCaseArchiveButton(): Promise<void>
+    {
+        const archiveCase = this.page.locator("//ul[@role='menu']//li[contains(text(),'Archive')]");
+        if(archiveCase)
+            {
+                console.log(archiveCase);
+                await archiveCase.click();
+            }
+    }
+
+    async clickArchiveCaseButton(): Promise <void>{
+        await this.archiveCaseButton.click();
+    }
+
+    async clickCancelButton(): Promise <void>{
+        await this.cancel.click();
+    }
 }
+    
+

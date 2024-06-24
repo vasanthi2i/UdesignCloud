@@ -12,6 +12,7 @@ import { Prescriptionpage } from "../src/Pages/Prescriptionpage";
 import {SummaryPage} from "../src/Pages/SummaryPage";
 import { UassistOrderConfirmationPage } from "../src/Pages/UassistOrderConfirmationPage";
 import { TemplatePage } from "../src/Pages/TemplatePage";
+import { PatientListPage } from "../src/Pages/PatientListPage";
 
 
 test("Verify uassist case can be created for a new case", async ({page}) => {
@@ -19,16 +20,16 @@ test("Verify uassist case can be created for a new case", async ({page}) => {
     test.setTimeout(200000);
     const pages:any [] = [];
     pages.push(new LoginPage(page), new ScansPage(page), new AddNewPatient(page), 
-    new PatientOverviewPage(page), new PhotographsPage(page), new XraysPage(page),
+    new PatientOverviewPage(page),new PatientListPage(page), new PhotographsPage(page), new XraysPage(page),
     new DentalChartPage(page), new OrdertypePage(page), new Prescriptionpage(page),
     new SummaryPage(page), new UassistOrderConfirmationPage(page), new TemplatePage(page));
-    const[login_page,scans_page,addnewpatient_page,patientoverview_page,photographs_page,xrays_page,
+    const[login_page,scans_page,addnewpatient_page,patientoverview_page,patientlist_page,photographs_page,xrays_page,
         dentalchart_page,ordertype_page,prescription_page,summary_page,uassist_order_page,
         template_page] = pages;
 
     await Utils.launchURL(process.env.BASE, page);
     await login_page.login(process.env.Email,process.env.Password);
-    await patientoverview_page.clickAddNewPatientButton();
+    await patientlist_page.clickAddNewPatientButton();
     await addnewpatient_page.addPatient("test","123","11","12","1988","US SQA_Ortho","test",);
     await page.waitForLoadState();
     await scans_page.uploadUpperStlFile();
@@ -37,7 +38,7 @@ test("Verify uassist case can be created for a new case", async ({page}) => {
     await scans_page.uploadLowerStlFile();
     await page.waitForLoadState();
     await page.waitForTimeout(5000);
-    await scans_page.clickNextButtonOnScansPage(page);
+    await scans_page.clickNextButtonOnScansPage();
     await photographs_page.uploadCompositeImageFile();
     await photographs_page.clickNextButtonOnPhotographsPage();
     await xrays_page.uploadPanoImageFile();
