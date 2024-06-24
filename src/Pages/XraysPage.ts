@@ -12,6 +12,10 @@ export class XraysPage {
     nextButton: Locator;
     backButton: Locator;
     closeButton: Locator;
+    scansValidationMessage: Locator;
+    photoValidationMessage: Locator;
+    panoValidationMessage: Locator;
+    
 
     constructor(page: Page) {
         this.page = page;
@@ -20,6 +24,9 @@ export class XraysPage {
         this.nextButton = page.getByTestId('ChevronRightIcon');
         this.backButton = page.getByTestId('ChevronLeftIcon');
         this.closeButton = page.getByRole('button', { name: 'Close' });
+        this.scansValidationMessage = page.getByText('One scan is required');
+        this.photoValidationMessage = page.getByText('One photograph is required');
+        this.panoValidationMessage = page.getByText('Pano is required');
     }
 
     //Uploading Pano image
@@ -28,16 +35,15 @@ export class XraysPage {
         console.log('Uploaded Panographic image');
     }
 
-
     //Uploading ceph image
     async uploadCephImageFile(): Promise<void> {
         await Utils.uploadSingleFile(this.uploadCephImage, 'src/resources/Xrays/ceph.png');
     }
 
     // Clicking Next button 
-    async clickNextButtonOnXraysPage(): Promise<void> {
-        await Utils.clickNextButton(this.nextButton);
-    }
+    // async clickNextButtonOnXraysPage(): Promise<void> {
+    //     await Utils.clickNextButton(this.nextButton);
+    // }
 
     // Clicking Close button
     async clickCloseButtonOnXraysPage(): Promise<void> {
@@ -48,4 +54,22 @@ export class XraysPage {
     async clickBackButtonOnXraysPage(): Promise<void> {
         await Utils.clickBackButton(this.backButton);
     }
+
+    async returnScansValidationMessage(): Promise<string> {
+        const validateMessage = this.scansValidationMessage.innerText();
+        return validateMessage;
+    }
+
+    async returnPhotographValidationMessage(): Promise<string> {
+        const validateMessage = this.photoValidationMessage.innerText();
+        return validateMessage;
+    }
+
+    async returnPanoValidationMessage(): Promise<string> {
+        const validateMessage = this.panoValidationMessage.innerText();
+        return validateMessage;
+    }
+
+
+
 }
