@@ -6,9 +6,7 @@ import { ScansPage } from "../src/Pages/ScansPage";
 import { XraysPage } from "../src/Pages/XraysPage";
 import { PatientListPage } from "../src/Pages/PatientListPage";
 import { Utils } from "../src/Utils/Utils";
-import { ElementUtil, clickBackButton, clickNextButton } from "../src/Utils/ElementUtil";
-
-
+import {clickBackButton, clickNextButton } from "../src/Utils/ElementUtil";
 
 
 test("Validate alert message without uploadeding images/scans for patient creation", async ({page}) => {

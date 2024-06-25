@@ -21,4 +21,5 @@ test ("Verify doctor is able to archive existing patient", async ({page}) => {
     const toaster_message = await patientedit_page.archiveConfirmationText();
     await expect(toaster_message).toBe('Patient Archived successfully');
     console.log('Confirmation message: ' +toaster_message);
+    await page.close();
 })
