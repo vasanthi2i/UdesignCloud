@@ -1,21 +1,16 @@
 import { Locator, Page } from "playwright-core";
-import { Utils } from "./Utils";
 
-export class ElementUtil
-{
-    page:Page;
-    nextButton: Locator;
+// export class ElementUtil
+// {
+//     page:Page;
+//     nextButton: Locator;
     
-    constructor(page: Page)
-    {
-        this.page=page;
-        this.nextButton = page.getByTestId('ChevronRightIcon');
-    }
-
-    async clickNextButtonOnXraysPage(): Promise<void> {
-        await Utils.clickNextButton(this.nextButton);
-    }
-}
+//     constructor(page: Page)
+//     {
+//         this.page=page;
+//         this.nextButton = page.getByTestId('ChevronRightIcon');
+//     }
+// }
 
 export async function clickNextButton(page: Page) {
     const nextButton = page.getByTestId('ChevronRightIcon');

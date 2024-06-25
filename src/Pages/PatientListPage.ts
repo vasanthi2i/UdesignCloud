@@ -51,19 +51,16 @@ export class PatientListPage{
        
         console.log("Fillout Rx form filter was selected");
     }
-
     async filterLabelConfirmation(): Promise<string> {
         const status_label = await this.filterLabelFillOutRxForm.innerText();
         return status_label;
     }
-    
 
     async searchPatient(patientName: string): Promise <void>
     {
         await this.searchField.click();
         await this.searchField.fill(patientName);
     }
-
     async clickCaseMenuOptionsIcon(caseId: string): Promise<void>
     {
         if(caseId)
@@ -101,5 +98,3 @@ export class PatientListPage{
         await this.cancel.click();
     }
 }
-    
-
